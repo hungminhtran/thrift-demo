@@ -1,5 +1,5 @@
 all:
 	#make server
-	g++ MyFirstService_server.skeleton.cpp gen-cpp/*.cpp -o MyFirstService_server.skeleton.out -lthrift
+	g++ service_server.cpp gen-cpp/*.cpp -o service_server.out -lthrift
 	#make client
 	g++ client.cpp  gen-cpp/*.cpp -o client.out -lthrift
