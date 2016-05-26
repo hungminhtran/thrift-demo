@@ -18,7 +18,7 @@ MyError::~MyError() throw() {
 }
 
 
-void MyError::__set_error_code(const int val) {
+void MyError::__set_error_code(const int32_t val) {
   this->error_code = val;
 }
 

@@ -11,8 +11,7 @@ using namespace apache::thrift;
 using namespace apache::thrift::protocol;
 using namespace apache::thrift::transport;
 
-using namespace tutorial;
-using namespace shared;
+using namespace  myfirst;
 
 int main() {
   boost::shared_ptr<TTransport> socket(new TSocket("localhost", 9090));
@@ -26,7 +25,7 @@ int main() {
     cout << "log file abc"<<endl;
     client.send_multiply(2, 3);
     cout << "2 * 3 = " <<  client.recv_multiply()<< endl;
-    client.send_get_log_size("logxyzt.log")
+    client.send_get_log_size("logxyzt.log");
     cout<<"get log file "<<client.recv_get_log_size()<<endl;
     transport->close();
   } catch (TException& tx) {

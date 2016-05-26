@@ -19,8 +19,6 @@
 
 namespace myfirst {
 
-typedef int32_t int;
-
 class MyError;
 
 typedef struct _MyError__isset {
@@ -38,12 +36,12 @@ class MyError : public ::apache::thrift::TException {
   }
 
   virtual ~MyError() throw();
-  int error_code;
+  int32_t error_code;
   std::string error_description;
 
   _MyError__isset __isset;
 
-  void __set_error_code(const int val);
+  void __set_error_code(const int32_t val);
 
   void __set_error_description(const std::string& val);
 

@@ -516,13 +516,13 @@ void MyFirstServiceClient::send_log(const std::string& fileName)
   oprot_->getTransport()->flush();
 }
 
-int MyFirstServiceClient::multiply(const int number1, const int number2)
+int32_t MyFirstServiceClient::multiply(const int32_t number1, const int32_t number2)
 {
   send_multiply(number1, number2);
   return recv_multiply();
 }
 
-void MyFirstServiceClient::send_multiply(const int number1, const int number2)
+void MyFirstServiceClient::send_multiply(const int32_t number1, const int32_t number2)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("multiply", ::apache::thrift::protocol::T_CALL, cseqid);
@@ -537,7 +537,7 @@ void MyFirstServiceClient::send_multiply(const int number1, const int number2)
   oprot_->getTransport()->flush();
 }
 
-int MyFirstServiceClient::recv_multiply()
+int32_t MyFirstServiceClient::recv_multiply()
 {
 
   int32_t rseqid = 0;
@@ -562,7 +562,7 @@ int MyFirstServiceClient::recv_multiply()
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  int _return;
+  int32_t _return;
   MyFirstService_multiply_presult result;
   result.success = &_return;
   result.read(iprot_);
@@ -575,7 +575,7 @@ int MyFirstServiceClient::recv_multiply()
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "multiply failed: unknown result");
 }
 
-int MyFirstServiceClient::get_log_size(const std::string& fileName)
+int32_t MyFirstServiceClient::get_log_size(const std::string& fileName)
 {
   send_get_log_size(fileName);
   return recv_get_log_size();
@@ -595,7 +595,7 @@ void MyFirstServiceClient::send_get_log_size(const std::string& fileName)
   oprot_->getTransport()->flush();
 }
 
-int MyFirstServiceClient::recv_get_log_size()
+int32_t MyFirstServiceClient::recv_get_log_size()
 {
 
   int32_t rseqid = 0;
@@ -620,7 +620,7 @@ int MyFirstServiceClient::recv_get_log_size()
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  int _return;
+  int32_t _return;
   MyFirstService_get_log_size_presult result;
   result.success = &_return;
   result.read(iprot_);
@@ -832,13 +832,13 @@ void MyFirstServiceConcurrentClient::send_log(const std::string& fileName)
   sentry.commit();
 }
 
-int MyFirstServiceConcurrentClient::multiply(const int number1, const int number2)
+int32_t MyFirstServiceConcurrentClient::multiply(const int32_t number1, const int32_t number2)
 {
   int32_t seqid = send_multiply(number1, number2);
   return recv_multiply(seqid);
 }
 
-int32_t MyFirstServiceConcurrentClient::send_multiply(const int number1, const int number2)
+int32_t MyFirstServiceConcurrentClient::send_multiply(const int32_t number1, const int32_t number2)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
@@ -857,7 +857,7 @@ int32_t MyFirstServiceConcurrentClient::send_multiply(const int number1, const i
   return cseqid;
 }
 
-int MyFirstServiceConcurrentClient::recv_multiply(const int32_t seqid)
+int32_t MyFirstServiceConcurrentClient::recv_multiply(const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -895,7 +895,7 @@ int MyFirstServiceConcurrentClient::recv_multiply(const int32_t seqid)
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      int _return;
+      int32_t _return;
       MyFirstService_multiply_presult result;
       result.success = &_return;
       result.read(iprot_);
@@ -917,7 +917,7 @@ int MyFirstServiceConcurrentClient::recv_multiply(const int32_t seqid)
   } // end while(true)
 }
 
-int MyFirstServiceConcurrentClient::get_log_size(const std::string& fileName)
+int32_t MyFirstServiceConcurrentClient::get_log_size(const std::string& fileName)
 {
   int32_t seqid = send_get_log_size(fileName);
   return recv_get_log_size(seqid);
@@ -941,7 +941,7 @@ int32_t MyFirstServiceConcurrentClient::send_get_log_size(const std::string& fil
   return cseqid;
 }
 
-int MyFirstServiceConcurrentClient::recv_get_log_size(const int32_t seqid)
+int32_t MyFirstServiceConcurrentClient::recv_get_log_size(const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -979,7 +979,7 @@ int MyFirstServiceConcurrentClient::recv_get_log_size(const int32_t seqid)
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      int _return;
+      int32_t _return;
       MyFirstService_get_log_size_presult result;
       result.success = &_return;
       result.read(iprot_);

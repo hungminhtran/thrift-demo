@@ -22,8 +22,8 @@ class MyFirstServiceIf {
  public:
   virtual ~MyFirstServiceIf() {}
   virtual void log(const std::string& fileName) = 0;
-  virtual int multiply(const int number1, const int number2) = 0;
-  virtual int get_log_size(const std::string& fileName) = 0;
+  virtual int32_t multiply(const int32_t number1, const int32_t number2) = 0;
+  virtual int32_t get_log_size(const std::string& fileName) = 0;
 };
 
 class MyFirstServiceIfFactory {
@@ -56,12 +56,12 @@ class MyFirstServiceNull : virtual public MyFirstServiceIf {
   void log(const std::string& /* fileName */) {
     return;
   }
-  int multiply(const int /* number1 */, const int /* number2 */) {
-    int _return = 0;
+  int32_t multiply(const int32_t /* number1 */, const int32_t /* number2 */) {
+    int32_t _return = 0;
     return _return;
   }
-  int get_log_size(const std::string& /* fileName */) {
-    int _return = 0;
+  int32_t get_log_size(const std::string& /* fileName */) {
+    int32_t _return = 0;
     return _return;
   }
 };
@@ -130,14 +130,14 @@ class MyFirstService_multiply_args {
   }
 
   virtual ~MyFirstService_multiply_args() throw();
-  int number1;
-  int number2;
+  int32_t number1;
+  int32_t number2;
 
   _MyFirstService_multiply_args__isset __isset;
 
-  void __set_number1(const int val);
+  void __set_number1(const int32_t val);
 
-  void __set_number2(const int val);
+  void __set_number2(const int32_t val);
 
   bool operator == (const MyFirstService_multiply_args & rhs) const
   {
@@ -164,8 +164,8 @@ class MyFirstService_multiply_pargs {
 
 
   virtual ~MyFirstService_multiply_pargs() throw();
-  const int* number1;
-  const int* number2;
+  const int32_t* number1;
+  const int32_t* number2;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
@@ -185,11 +185,11 @@ class MyFirstService_multiply_result {
   }
 
   virtual ~MyFirstService_multiply_result() throw();
-  int success;
+  int32_t success;
 
   _MyFirstService_multiply_result__isset __isset;
 
-  void __set_success(const int val);
+  void __set_success(const int32_t val);
 
   bool operator == (const MyFirstService_multiply_result & rhs) const
   {
@@ -218,7 +218,7 @@ class MyFirstService_multiply_presult {
 
 
   virtual ~MyFirstService_multiply_presult() throw();
-  int* success;
+  int32_t* success;
 
   _MyFirstService_multiply_presult__isset __isset;
 
@@ -290,12 +290,12 @@ class MyFirstService_get_log_size_result {
   }
 
   virtual ~MyFirstService_get_log_size_result() throw();
-  int success;
+  int32_t success;
   MyError error;
 
   _MyFirstService_get_log_size_result__isset __isset;
 
-  void __set_success(const int val);
+  void __set_success(const int32_t val);
 
   void __set_error(const MyError& val);
 
@@ -329,7 +329,7 @@ class MyFirstService_get_log_size_presult {
 
 
   virtual ~MyFirstService_get_log_size_presult() throw();
-  int* success;
+  int32_t* success;
   MyError error;
 
   _MyFirstService_get_log_size_presult__isset __isset;
@@ -365,12 +365,12 @@ class MyFirstServiceClient : virtual public MyFirstServiceIf {
   }
   void log(const std::string& fileName);
   void send_log(const std::string& fileName);
-  int multiply(const int number1, const int number2);
-  void send_multiply(const int number1, const int number2);
-  int recv_multiply();
-  int get_log_size(const std::string& fileName);
+  int32_t multiply(const int32_t number1, const int32_t number2);
+  void send_multiply(const int32_t number1, const int32_t number2);
+  int32_t recv_multiply();
+  int32_t get_log_size(const std::string& fileName);
   void send_get_log_size(const std::string& fileName);
-  int recv_get_log_size();
+  int32_t recv_get_log_size();
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
@@ -432,7 +432,7 @@ class MyFirstServiceMultiface : virtual public MyFirstServiceIf {
     ifaces_[i]->log(fileName);
   }
 
-  int multiply(const int number1, const int number2) {
+  int32_t multiply(const int32_t number1, const int32_t number2) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
@@ -441,7 +441,7 @@ class MyFirstServiceMultiface : virtual public MyFirstServiceIf {
     return ifaces_[i]->multiply(number1, number2);
   }
 
-  int get_log_size(const std::string& fileName) {
+  int32_t get_log_size(const std::string& fileName) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
@@ -482,12 +482,12 @@ class MyFirstServiceConcurrentClient : virtual public MyFirstServiceIf {
   }
   void log(const std::string& fileName);
   void send_log(const std::string& fileName);
-  int multiply(const int number1, const int number2);
-  int32_t send_multiply(const int number1, const int number2);
-  int recv_multiply(const int32_t seqid);
-  int get_log_size(const std::string& fileName);
+  int32_t multiply(const int32_t number1, const int32_t number2);
+  int32_t send_multiply(const int32_t number1, const int32_t number2);
+  int32_t recv_multiply(const int32_t seqid);
+  int32_t get_log_size(const std::string& fileName);
   int32_t send_get_log_size(const std::string& fileName);
-  int recv_get_log_size(const int32_t seqid);
+  int32_t recv_get_log_size(const int32_t seqid);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;

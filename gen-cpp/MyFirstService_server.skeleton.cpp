@@ -24,18 +24,19 @@ class MyFirstServiceHandler : virtual public MyFirstServiceIf {
 
   void log(const std::string& fileName) {
     // Your implementation goes here
-    std::cout<<"log filename: "<<fileName<<std::endl;
+    printf("log\n");
   }
 
-  int multiply(const int number1, const int number2) {
+  int32_t multiply(const int32_t number1, const int32_t number2) {
     // Your implementation goes here
-    return number1 * number2;
+    printf("multiply\n");
+    return -1;
   }
 
-  int get_log_size(const std::string& fileName) {
+  int32_t get_log_size(const std::string& fileName) {
     // Your implementation goes here
-    std::cout<<"get log size filename: "<<fileName<<std::endl;
-    return 9876;
+    printf("get_log_size\n");
+    return -1;
   }
 
 };
