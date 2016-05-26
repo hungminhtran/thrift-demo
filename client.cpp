@@ -27,6 +27,14 @@ int main() {
     cout << "2 * 3 = " <<  client.recv_multiply()<< endl;
     client.send_get_log_size("logxyzt.log");
     cout<<"get log file "<<client.recv_get_log_size()<<endl;
+    try {
+        client.send_get_log_size("");
+        cout<<"get log file "<<client.recv_get_log_size()<<endl;
+    }
+    catch (MyError myError){
+        cout<<"exception catch successfully"<<endl<<"error code: "<<myError.error_code<<endl
+        <<"error description: "<<myError.error_description<<endl;
+    }
     transport->close();
   } catch (TException& tx) {
     cout << "ERROR: " << tx.what() << endl;
